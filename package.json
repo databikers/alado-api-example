@@ -13,7 +13,6 @@
     "test": "jest --forceExit --coverage --verbose --runInBand"
   },
   "dependencies": {
-    "@types/uuid": "^9.0.8",
     "alado": "latest",
     "uuid": "^10.0.0"
   },
@@ -22,6 +21,7 @@
     "@types/node": "20.10.6",
     "@types/prettier": "2.6.0",
     "@types/supertest": "^6.0.2",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "6.17.0",
     "@typescript-eslint/parser": "6.17.0",
     "eslint": "8.47.0",
