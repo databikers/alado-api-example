@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "lib": [ "ES2022" ],
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "ES2022",
+    "declaration": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@app": [
+        "src/application"
+      ],
+      "@config": [
+        "src/config"
+      ],
+      "@context": [
+        "src/context"
+      ],
+      "@controller": [
+        "src/controllers"
+      ],
+      "@data": [
+        "src/data-holder"
+      ],
+      "@dto": [
+        "src/dto"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
