@@ -12,7 +12,7 @@ import {
   userGetResponse,
   userRequestPath,
   usersGetResponse,
-  userUpdateBody,
+  userUpdateBody, setUserAvatarContextOptions, updateUserContextOptions, getUserContextOptions,
 } from '@context';
 import { sessionController, userController } from '@controller';
 
@@ -49,7 +49,7 @@ app.get(
   {
     title: 'Get user',
     auth: auth,
-    options: getUsersContextOptions,
+    options: getUserContextOptions,
     request: {
       path: userRequestPath
     },
@@ -75,7 +75,7 @@ app.put(
   '/user/:id',
   {
     title: 'Update user',
-    options: getUsersContextOptions,
+    options: updateUserContextOptions,
     request: {
       path: userRequestPath,
       body: userUpdateBody
@@ -83,4 +83,40 @@ app.put(
     response: userGetResponse
   },
   userController.update
+);
+
+
+app.post(
+  '/user/:id/avatar',
+  {
+    title: 'Set user avatar',
+    options: setUserAvatarContextOptions,
+    auth,
+    request: {
+      path: userRequestPath,
+      files: {
+        avatar: {
+          mimetypes: [
+            'image/png'
+          ],
+          maxSize: 1048576,
+          required: true,
+          maxSizeError: {
+            statusCode: 413,
+            message: 'The avatar should not be larger than 1MB'
+          },
+          mimetypeError: {
+            statusCode: 415,
+            message: 'The avatar should be a PNG image'
+          },
+          requiredError: {
+            statusCode: 400,
+            message: 'The avatar file is required'
+          }
+        }
+      }
+    },
+    response: userGetResponse
+  },
+  userController.setAvatar
 );

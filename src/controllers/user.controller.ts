@@ -1,7 +1,8 @@
+import { createWriteStream } from 'fs';
 import { Request } from 'alado';
 import { DataHolder } from '@data';
 import { SignUpDto, UserDto } from '@dto';
-
+import * as process from 'process';
 export class UserController {
 
   public async create(req: Request) {
@@ -54,6 +55,26 @@ export class UserController {
       statusCode: user ? 200 : 404,
       headers: { 'Content-Type': 'application/json' },
       body: DataHolder.getUser(path.id) || { message: 'Not Found' }
+    }
+  }
+
+  public setAvatar(req: Request) {
+    const { path, files } = req;
+    const user = DataHolder.getUser(path.id);
+    if (!user) {
+      return {
+        statusCode: 404,
+        headers: { 'Content-Type': 'application/json' },
+        body: { message: 'Not Found' }
+      }
+    }
+    const { avatar } = files;
+    const writeStream = createWriteStream(`${process.cwd()}/uploads/user-${path.id}-avatar.png`, { encoding: 'latin1'});
+    avatar.stream.pipe(writeStream);
+    return {
+      statusCode: 202,
+      headers: { 'Content-Type': 'application/json' },
+      body: {}
     }
   }
 
