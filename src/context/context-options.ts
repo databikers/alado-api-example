@@ -34,11 +34,21 @@ export const getUserContextOptions: ContextOptions = {
     tags: ['User']
   }
 }
+
 export const getUsersContextOptions: ContextOptions = {
   allowUnknownFields: true,
   openApiDoc: {
     description: 'List users',
     operationId: 'listUsers',
+    tags: ['User']
+  }
+}
+
+export const setUserAvatarContextOptions: ContextOptions = {
+  allowUnknownFields: true,
+  openApiDoc: {
+    description: 'Set user avatar',
+    operationId: 'setUserAvatar',
     tags: ['User']
   }
 }
