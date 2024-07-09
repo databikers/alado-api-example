@@ -4,7 +4,6 @@ import { DataHolder } from '@data';
 import { SignUpDto, UserDto } from '@dto';
 import * as process from 'process';
 export class UserController {
-
   public async create(req: Request) {
     const { body } = req;
     const { username } = body;
@@ -14,16 +13,16 @@ export class UserController {
         statusCode: 409,
         headers: { 'Content-Type': 'application/json' },
         body: {
-          message: `Username ${username} is taken already`
-        }
-      }
+          message: `Username ${username} is taken already`,
+        },
+      };
     }
     const user = DataHolder.signUp(body as SignUpDto);
     return {
       statusCode: 201,
       headers: { 'Content-Type': 'application/json' },
-      body: user
-    }
+      body: user,
+    };
   }
 
   public async getById(req: Request) {
@@ -32,8 +31,18 @@ export class UserController {
     return {
       statusCode: user ? 200 : 404,
       headers: { 'Content-Type': 'application/json' },
-      body: user|| { message: 'Not Found' }
-    }
+      body: user || { message: 'Not Found' },
+    };
+  }
+
+  public async getByName(req: Request) {
+    const { path } = req;
+    const user = DataHolder.getUser(path.name);
+    return {
+      statusCode: user ? 200 : 404,
+      headers: { 'Content-Type': 'application/json' },
+      body: user || { message: 'Not Found' },
+    };
   }
 
   public async getList(req: Request) {
@@ -41,21 +50,21 @@ export class UserController {
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: users
-    }
+      body: users,
+    };
   }
 
   public async update(req: Request) {
     const { path, body } = req;
     const user = DataHolder.getUser(path.id);
     if (user) {
-      DataHolder.setUser(path.id, body as UserDto)
+      DataHolder.setUser(path.id, body as UserDto);
     }
     return {
       statusCode: user ? 200 : 404,
       headers: { 'Content-Type': 'application/json' },
-      body: DataHolder.getUser(path.id) || { message: 'Not Found' }
-    }
+      body: DataHolder.getUser(path.id) || { message: 'Not Found' },
+    };
   }
 
   public setAvatar(req: Request) {
@@ -65,19 +74,20 @@ export class UserController {
       return {
         statusCode: 404,
         headers: { 'Content-Type': 'application/json' },
-        body: { message: 'Not Found' }
-      }
+        body: { message: 'Not Found' },
+      };
     }
     const { avatar } = files;
-    const writeStream = createWriteStream(`${process.cwd()}/uploads/user-${path.id}-avatar.png`, { encoding: 'binary'});
+    const writeStream = createWriteStream(`${process.cwd()}/uploads/user-${path.id}-avatar.png`, {
+      encoding: 'latin1',
+    });
     avatar.stream.pipe(writeStream);
     return {
       statusCode: 202,
       headers: { 'Content-Type': 'application/json' },
-      body: {}
-    }
+      body: {},
+    };
   }
-
 }
 
 export const userController = new UserController();

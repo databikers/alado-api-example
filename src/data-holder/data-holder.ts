@@ -1,17 +1,11 @@
 import { v4 } from 'uuid';
 
-import {
-  AuthSourceDto,
-  SignInDto,
-  SignUpDto,
-  UserDto
-} from '@dto';
+import { AuthSourceDto, SignInDto, SignUpDto, UserDto } from '@dto';
 
 const users = new Map<string, UserDto>();
 const authSources = new Map<string, AuthSourceDto>();
 
 export class DataHolder {
-
   static signUp(data: SignUpDto) {
     const { password, ...user } = data;
     const { username } = user;
@@ -20,11 +14,11 @@ export class DataHolder {
     users.set(id, user);
     authSources.set(token, { password, username, user: id });
     const u = users.get(id);
-    return { id, ...u }
+    return { id, ...u };
   }
 
   static signIn(data: SignInDto): string {
-    const { username, password} = data;
+    const { username, password } = data;
     let bearer: string;
     authSources.forEach((authSource: AuthSourceDto, token: string) => {
       if (!bearer) {
@@ -36,10 +30,10 @@ export class DataHolder {
     return bearer;
   }
 
-  static bearerAuth(token: string){
+  static bearerAuth(token: string) {
     const authSource = authSources.get(token);
     if (!authSource) {
-      return
+      return;
     }
     const { user } = authSource;
     return users.get(user);
@@ -50,7 +44,7 @@ export class DataHolder {
   }
 
   static isUsernameFree(username: string) {
-    return !Array.from(users.values()).some((user: UserDto) => user.username === username)
+    return !Array.from(users.values()).some((user: UserDto) => user.username === username);
   }
 
   static setUser(id: string, user: UserDto) {
@@ -62,8 +56,7 @@ export class DataHolder {
     const data: UserDto[] = [];
     users.forEach((user: UserDto, id: string) => {
       data.push({ id, ...user });
-    })
+    });
     return data;
   }
-
 }

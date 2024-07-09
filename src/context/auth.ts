@@ -10,6 +10,6 @@ export const auth: RequestAuthentication = {
   },
   error: {
     statusCode: 401,
-    message: 'Unauthorized'
-  }
+    message: 'Unauthorized',
+  },
 };

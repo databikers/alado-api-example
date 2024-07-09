@@ -6,18 +6,18 @@ const username: PropertyDefinition = {
       type: 'string',
     },
     example: 'john_doe',
-    description: 'Username'
+    description: 'Username',
   },
   validation: {
     required: true,
-    handler (value) {
+    handler(value) {
       return /^\w{3,}$/.test(value);
     },
     error: {
       statusCode: 400,
-      message: 'Username should be an alphanumeric string at least 3 bytes length'
-    }
-  }
+      message: 'Username should be an alphanumeric string at least 3 bytes length',
+    },
+  },
 };
 
 const bio: PropertyDefinition = {
@@ -26,18 +26,18 @@ const bio: PropertyDefinition = {
       type: 'string',
     },
     example: 'No Name',
-    description: 'Bio'
+    description: 'Bio',
   },
   validation: {
     required: true,
-    handler (value) {
+    handler(value) {
       return Boolean(value);
     },
     error: {
       statusCode: 400,
-      message: 'Bio should be a non-empty string'
-    }
-  }
+      message: 'Bio should be a non-empty string',
+    },
+  },
 };
 
 const password: PropertyDefinition = {
@@ -46,18 +46,18 @@ const password: PropertyDefinition = {
       type: 'string',
     },
     example: 'some$trongp@ssword=)',
-    description: 'Password'
+    description: 'Password',
   },
   validation: {
     required: true,
-    handler (value) {
+    handler(value) {
       return /.{8,}/.test(value);
     },
     error: {
       statusCode: 400,
-      message: 'Password should be 8 bytes length'
-    }
-  }
+      message: 'Password should be 8 bytes length',
+    },
+  },
 };
 
 const id: PropertyDefinition = {
@@ -66,36 +66,40 @@ const id: PropertyDefinition = {
       type: 'string',
     },
     example: '19011293c5f',
-    description: 'User id'
+    description: 'User id',
   },
   validation: {
     required: true,
-    handler (value) {
+    handler(value) {
       return /^[0-9a-f]{11}$/.test(value);
     },
     error: {
       statusCode: 400,
-      message: 'Invalid id: id should be 11 bytes hex string'
-    }
-  }
+      message: 'Invalid id: id should be 11 bytes hex string',
+    },
+  },
 };
 
 export const signInBody: Record<string, PropertyDefinition> = {
   username,
-  password
+  password,
 };
 
 export const userCreateBody: Record<string, PropertyDefinition> = {
   username,
   bio,
-  password
+  password,
 };
 
 export const userUpdateBody: Record<string, PropertyDefinition> = {
   username,
-  bio
+  bio,
 };
 
 export const userRequestPath: Record<string, PropertyDefinition> = {
-  id
+  id,
+};
+
+export const userRequestPathName: Record<string, PropertyDefinition> = {
+  name: id,
 };

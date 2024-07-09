@@ -5,50 +5,50 @@ export const createUserContextOptions: ContextOptions = {
   openApiDoc: {
     description: 'Sign Up',
     operationId: 'signUp',
-    tags: ['User']
-  }
-}
+    tags: ['User'],
+  },
+};
 export const signInContextOptions: ContextOptions = {
   allowUnknownFields: true,
   openApiDoc: {
     description: 'Sign In',
     operationId: 'signIn',
-    tags: ['Session']
-  }
-}
+    tags: ['Session'],
+  },
+};
 
 export const updateUserContextOptions: ContextOptions = {
   allowUnknownFields: true,
   openApiDoc: {
     description: 'Update Profile',
     operationId: 'updateUser',
-    tags: ['User']
-  }
-}
+    tags: ['User'],
+  },
+};
 
 export const getUserContextOptions: ContextOptions = {
   allowUnknownFields: true,
   openApiDoc: {
     description: 'User info',
     operationId: 'getUserInfo',
-    tags: ['User']
-  }
-}
+    tags: ['User'],
+  },
+};
 
 export const getUsersContextOptions: ContextOptions = {
   allowUnknownFields: true,
   openApiDoc: {
     description: 'List users',
     operationId: 'listUsers',
-    tags: ['User']
-  }
-}
+    tags: ['User'],
+  },
+};
 
 export const setUserAvatarContextOptions: ContextOptions = {
   allowUnknownFields: true,
   openApiDoc: {
     description: 'Set user avatar',
     operationId: 'setUserAvatar',
-    tags: ['User']
-  }
-}
+    tags: ['User'],
+  },
+};

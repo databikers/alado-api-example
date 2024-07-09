@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [ "ES2022" ],
+    "lib": ["ES2022"],
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "ES2022",
@@ -15,27 +15,13 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@app": [
-        "src/application"
-      ],
-      "@config": [
-        "src/config"
-      ],
-      "@context": [
-        "src/context"
-      ],
-      "@controller": [
-        "src/controllers"
-      ],
-      "@data": [
-        "src/data-holder"
-      ],
-      "@dto": [
-        "src/dto"
-      ]
+      "@app": ["src/application"],
+      "@config": ["src/config"],
+      "@context": ["src/context"],
+      "@controller": ["src/controllers"],
+      "@data": ["src/data-holder"],
+      "@dto": ["src/dto"]
     }
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

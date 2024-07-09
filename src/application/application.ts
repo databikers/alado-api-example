@@ -12,7 +12,11 @@ import {
   userGetResponse,
   userRequestPath,
   usersGetResponse,
-  userUpdateBody, setUserAvatarContextOptions, updateUserContextOptions, getUserContextOptions,
+  userUpdateBody,
+  setUserAvatarContextOptions,
+  updateUserContextOptions,
+  getUserContextOptions,
+  userRequestPathName,
 } from '@context';
 import { sessionController, userController } from '@controller';
 
@@ -24,11 +28,11 @@ app.post(
     title: 'Sign Up',
     options: createUserContextOptions,
     request: {
-      body: userCreateBody
+      body: userCreateBody,
     },
-    response: userCreateResponse
+    response: userCreateResponse,
   },
-  userController.create
+  userController.create,
 );
 
 app.post(
@@ -37,11 +41,11 @@ app.post(
     title: 'Sign In',
     options: signInContextOptions,
     request: {
-      body: signInBody
+      body: signInBody,
     },
-    response: bearerResponse
+    response: bearerResponse,
   },
-  sessionController.signIn
+  sessionController.signIn,
 );
 
 app.get(
@@ -51,11 +55,25 @@ app.get(
     auth: auth,
     options: getUserContextOptions,
     request: {
-      path: userRequestPath
+      path: userRequestPath,
     },
-    response: userGetResponse
+    response: userGetResponse,
   },
-  userController.getById
+  userController.getById,
+);
+
+app.get(
+  '/user/@:name',
+  {
+    title: 'Get user',
+    auth: auth,
+    options: getUsersContextOptions,
+    request: {
+      path: userRequestPathName,
+    },
+    response: userGetResponse,
+  },
+  userController.getByName,
 );
 
 app.get(
@@ -65,11 +83,10 @@ app.get(
     auth: auth,
     options: getUsersContextOptions,
     request: {},
-    response: usersGetResponse
+    response: usersGetResponse,
   },
-  userController.getList
+  userController.getList,
 );
-
 
 app.put(
   '/user/:id',
@@ -78,13 +95,12 @@ app.put(
     options: updateUserContextOptions,
     request: {
       path: userRequestPath,
-      body: userUpdateBody
+      body: userUpdateBody,
     },
-    response: userGetResponse
+    response: userGetResponse,
   },
-  userController.update
+  userController.update,
 );
-
 
 app.post(
   '/user/:id/avatar',
@@ -96,27 +112,25 @@ app.post(
       path: userRequestPath,
       files: {
         avatar: {
-          mimetypes: [
-            'image/png'
-          ],
+          mimetypes: ['image/png'],
           maxSize: 1048576,
           required: true,
           maxSizeError: {
             statusCode: 413,
-            message: 'The avatar should not be larger than 1MB'
+            message: 'The avatar should not be larger than 1MB',
           },
           mimetypeError: {
             statusCode: 415,
-            message: 'The avatar should be a PNG image'
+            message: 'The avatar should be a PNG image',
           },
           requiredError: {
             statusCode: 400,
-            message: 'The avatar file is required'
-          }
-        }
-      }
+            message: 'The avatar file is required',
+          },
+        },
+      },
     },
-    response: userGetResponse
+    response: userGetResponse,
   },
-  userController.setAvatar
+  userController.setAvatar,
 );

@@ -1,20 +1,14 @@
 module.exports = {
   globals: {
     'ts-jest': {
-      tsconfig: 'tsconfig.json'
-    }
+      tsconfig: 'tsconfig.json',
+    },
   },
-  moduleFileExtensions: [
-    'ts',
-    'js',
-    'json'
-  ],
+  moduleFileExtensions: ['ts', 'js', 'json'],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  testMatch: [
-    '**/test/**/*.test.(ts|js)'
-  ],
-  testEnvironment: "node",
+  testMatch: ['**/test/**/*.test.(ts|js)'],
+  testEnvironment: 'node',
   moduleNameMapper: require('tsconfig-paths-jest')(require('./tsconfig.json')),
 };
