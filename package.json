@@ -10,7 +10,9 @@
     "start": "node dist/main.js",
     "build": "rm -rf dist && tsc && tsc-alias && eslint src/**/*.ts{,x}",
     "eslint": "eslint src --ext .ts",
-    "test": "jest --forceExit --coverage --verbose --runInBand"
+    "test": "jest --forceExit --coverage --verbose --runInBand",
+    "prettier-check": "prettier . --check",
+    "prettier-write": "prettier . --write"
   },
   "dependencies": {
     "alado": "latest",
@@ -28,6 +30,7 @@
     "husky": "3.0.0",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
+    "prettier": "^3.3.2",
     "supertest": "^7.0.0",
     "ts-jest": "^29.1.4",
     "ts-node": "^10.9.2",

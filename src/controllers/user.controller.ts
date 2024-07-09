@@ -69,7 +69,7 @@ export class UserController {
       }
     }
     const { avatar } = files;
-    const writeStream = createWriteStream(`${process.cwd()}/uploads/user-${path.id}-avatar.png`, { encoding: 'latin1'});
+    const writeStream = createWriteStream(`${process.cwd()}/uploads/user-${path.id}-avatar.png`, { encoding: 'binary'});
     avatar.stream.pipe(writeStream);
     return {
       statusCode: 202,
