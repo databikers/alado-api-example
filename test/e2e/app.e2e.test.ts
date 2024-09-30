@@ -75,7 +75,7 @@ describe('Example API  e2e test suite', () => {
     return request(apiUrl)
       .get(`/user/${id}`)
       .set('Accept', 'application/json')
-      .set('Authorization', bearerToken)
+      .set('x-api-key', bearerToken)
       .expect('Content-Type', /json/)
       .expect(200)
       .then((response: Response) => {
@@ -89,7 +89,7 @@ describe('Example API  e2e test suite', () => {
     return request(apiUrl)
       .get(`/user`)
       .set('Accept', 'application/json')
-      .set('Authorization', bearerToken)
+      .set('x-api-key', bearerToken)
       .expect('Content-Type', /json/)
       .expect(200)
       .then((response: Response) => {
@@ -102,7 +102,7 @@ describe('Example API  e2e test suite', () => {
     return request(apiUrl)
       .put(`/user/${id}`)
       .set('Accept', 'application/json')
-      .set('Authorization', bearerToken)
+      .set('x-api-key', bearerToken)
       .send({
         password: updatedUserInfo.password,
         username: updatedUserInfo.username,

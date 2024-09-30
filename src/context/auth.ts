@@ -3,7 +3,7 @@ import { DataHolder } from '@data';
 
 export const auth: RequestAuthentication = {
   required: true,
-  inputProperty: 'headers.authorization',
+  inputProperty: 'headers.x-api-key',
   outputProperty: 'auth.request',
   handler(value: string) {
     return DataHolder.bearerAuth(value);

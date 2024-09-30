@@ -1,7 +1,7 @@
 import { ContextOptions } from 'alado';
 
 export const createUserContextOptions: ContextOptions = {
-  allowUnknownFields: true,
+  allowUnknownFields: false,
   openApiDoc: {
     description: 'Sign Up',
     operationId: 'signUp',
@@ -9,7 +9,7 @@ export const createUserContextOptions: ContextOptions = {
   },
 };
 export const signInContextOptions: ContextOptions = {
-  allowUnknownFields: true,
+  allowUnknownFields: false,
   openApiDoc: {
     description: 'Sign In',
     operationId: 'signIn',
@@ -18,7 +18,7 @@ export const signInContextOptions: ContextOptions = {
 };
 
 export const updateUserContextOptions: ContextOptions = {
-  allowUnknownFields: true,
+  allowUnknownFields: false,
   openApiDoc: {
     description: 'Update Profile',
     operationId: 'updateUser',
@@ -27,7 +27,7 @@ export const updateUserContextOptions: ContextOptions = {
 };
 
 export const getUserContextOptions: ContextOptions = {
-  allowUnknownFields: true,
+  allowUnknownFields: false,
   openApiDoc: {
     description: 'User info',
     operationId: 'getUserInfo',
@@ -36,7 +36,7 @@ export const getUserContextOptions: ContextOptions = {
 };
 
 export const getUsersContextOptions: ContextOptions = {
-  allowUnknownFields: true,
+  allowUnknownFields: false,
   openApiDoc: {
     description: 'List users',
     operationId: 'listUsers',
@@ -45,7 +45,7 @@ export const getUsersContextOptions: ContextOptions = {
 };
 
 export const setUserAvatarContextOptions: ContextOptions = {
-  allowUnknownFields: true,
+  allowUnknownFields: false,
   openApiDoc: {
     description: 'Set user avatar',
     operationId: 'setUserAvatar',

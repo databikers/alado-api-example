@@ -2,6 +2,7 @@ import { AladoServerOptions } from 'alado';
 
 export const aladoServerOptions: AladoServerOptions = {
   port: 3000,
+  headers: {},
   cors: {
     enable: true,
     allowedOrigin: '*',

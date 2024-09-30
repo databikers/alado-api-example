@@ -17,6 +17,7 @@ import {
   updateUserContextOptions,
   getUserContextOptions,
   userRequestPathName,
+  q,
 } from '@context';
 import { sessionController, userController } from '@controller';
 
@@ -56,6 +57,9 @@ app.get(
     options: getUserContextOptions,
     request: {
       path: userRequestPath,
+      query: {
+        q,
+      },
     },
     response: userGetResponse,
   },
@@ -82,7 +86,11 @@ app.get(
     title: 'Get users',
     auth: auth,
     options: getUsersContextOptions,
-    request: {},
+    request: {
+      query: {
+        q,
+      },
+    },
     response: usersGetResponse,
   },
   userController.getList,
